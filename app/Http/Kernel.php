@@ -2,6 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckOrderOnProduct;
+use App\Http\Middleware\IsAdmin;
+use App\Http\Middleware\PersonOrders;
+use App\Http\Middleware\SetLocate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -62,5 +66,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'check_in_order' => CheckOrderOnProduct::class,
+        'set_locate' => SetLocate::class,
+        'check_person'=>PersonOrders::class,
     ];
 }
